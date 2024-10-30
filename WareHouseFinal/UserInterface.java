@@ -4,7 +4,7 @@ import java.io.*;
 public class UserInterface {
   private static UserInterface userInterface;
   private BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
-  private static Warehouse Warehouse;
+  private static Library library;
   private static final int EXIT = 0;
   private static final int ADD_MEMBER = 1;
   private static final int ADD_BOOKS = 2;
@@ -16,11 +16,9 @@ public class UserInterface {
   private static final int REMOVE_HOLD = 8;
   private static final int PROCESS_HOLD = 9;
   private static final int GET_TRANSACTIONS = 10;
-  private static final int SHOW_MEMBERS = 11;
-  private static final int SHOW_BOOKS = 12;
-  private static final int SAVE = 13;
-  private static final int RETRIEVE = 14;
-  private static final int HELP = 15;
+  private static final int SAVE = 11;
+  private static final int RETRIEVE = 12;
+  private static final int HELP = 13;
   private UserInterface() {
     if (yesOrNo("Look for saved data and  use it?")) {
       retrieve();
@@ -106,8 +104,6 @@ public class UserInterface {
     System.out.println(REMOVE_HOLD + " to  remove a hold on a book");
     System.out.println(PROCESS_HOLD + " to  process holds");
     System.out.println(GET_TRANSACTIONS + " to  print transactions");
-    System.out.println(SHOW_MEMBERS + " to  print members");
-    System.out.println(SHOW_BOOKS + " to  print books");
     System.out.println(SAVE + " to  save data");
     System.out.println(RETRIEVE + " to  retrieve");
     System.out.println(HELP + " for help");
@@ -143,45 +139,172 @@ public class UserInterface {
     } while (true);
   }
   public void issueBooks() {
-         System.out.println("Dummy Action");
+    Book result;
+    String memberID = getToken("Enter member id");
+    if (library.searchMembership(memberID) == null) {
+      System.out.println("No such member");
+      return;
+    }
+    do {
+      String bookID = getToken("Enter book id");
+      result = library.issueBook(memberID, bookID);
+      if (result != null){
+        System.out.println(result.getTitle()+ "   " +  result.getDueDate());
+      } else {
+          System.out.println("Book could not be issued");
+      }
+      if (!yesOrNo("Issue more books?")) {
+        break;
+      }
+    } while (true);
   }
   public void renewBooks() {
-      System.out.println("Dummy Action");
-  }
-
-  public void showBooks() {
-      Iterator allBooks = library.getBooks();
-      while (allBooks.hasNext()){
-	  Book book = (Book)(allBooks.next());
-          System.out.println(book.toString());
+    Book result;
+    String memberID = getToken("Enter member id");
+    if (library.searchMembership(memberID) == null) {
+      System.out.println("No such member");
+      return;
+    }
+    Iterator issuedBooks = library.getBooks(memberID);
+    while (issuedBooks.hasNext()){
+      Book book = (Book)(issuedBooks.next());
+      if (yesOrNo(book.getTitle())) {
+        result = library.renewBook(book.getId(), memberID);
+        if (result != null){
+          System.out.println(result.getTitle()+ "   " + result.getDueDate());
+        } else {
+          System.out.println("Book is not renewable");
+        }
       }
+    }
   }
-
-  public void showMembers() {
-      Iterator allMembers = library.getMembers();
-      while (allMembers.hasNext()){
-	  Member member = (Member)(allMembers.next());
-          System.out.println(member.toString());
-      }
-  }
-
   public void returnBooks() {
-      System.out.println("Dummy Action");
+    int result;
+    do {
+      String bookID = getToken("Enter book id");
+      result = library.returnBook(bookID);
+      switch(result) {
+        case Library.BOOK_NOT_FOUND:
+          System.out.println("No such Book in Library");
+          break;
+        case Library.BOOK_NOT_ISSUED:
+          System.out.println(" Book  was not checked out");
+          break;
+        case Library.BOOK_HAS_HOLD:
+          System.out.println("Book has a hold");
+          break;
+        case Library.OPERATION_FAILED:
+          System.out.println("Book could not be returned");
+          break;
+        case Library.OPERATION_COMPLETED:
+          System.out.println(" Book has been returned");
+          break;
+        default:
+          System.out.println("An error has occurred");
+      }
+      if (!yesOrNo("Return more books?")) {
+        break;
+      }
+    } while (true);
   }
   public void removeBooks() {
-      System.out.println("Dummy Action");   
+    int result;
+    do {
+      String bookID = getToken("Enter book id");
+      result = library.removeBook(bookID);
+      switch(result){
+        case Library.BOOK_NOT_FOUND:
+          System.out.println("No such Book in Library");
+          break;
+        case Library.BOOK_ISSUED:
+          System.out.println(" Book is currently checked out");
+          break;
+        case Library.BOOK_HAS_HOLD:
+          System.out.println("Book has a hold");
+          break;
+        case Library.OPERATION_FAILED:
+          System.out.println("Book could not be removed");
+          break;
+        case Library.OPERATION_COMPLETED:
+          System.out.println(" Book has been removed");
+          break;
+        default:
+          System.out.println("An error has occurred");
+      }
+      if (!yesOrNo("Remove more books?")) {
+        break;
+      }
+    } while (true);
   }
   public void placeHold() {
-      System.out.println("Dummy Action");   
+    String memberID = getToken("Enter member id");
+    String bookID = getToken("Enter book id");
+    int duration = getNumber("Enter duration of hold");
+    int result = library.placeHold(memberID, bookID, duration);
+    switch(result){
+      case Library.BOOK_NOT_FOUND:
+        System.out.println("No such Book in Library");
+        break;
+      case Library.BOOK_NOT_ISSUED:
+        System.out.println(" Book is not checked out");
+        break;
+      case Library.NO_SUCH_MEMBER:
+        System.out.println("Not a valid member ID");
+        break;
+      case Library.HOLD_PLACED:
+        System.out.println("A hold has been placed");
+        break;
+      default:
+        System.out.println("An error has occurred");
+    }
   }
   public void removeHold() {
-      System.out.println("Dummy Action");   
+    String memberID = getToken("Enter member id");
+    String bookID = getToken("Enter book id");
+    int result = library.removeHold(memberID, bookID);
+    switch(result){
+      case Library.BOOK_NOT_FOUND:
+        System.out.println("No such Book in Library");
+        break;
+      case Library.NO_SUCH_MEMBER:
+        System.out.println("Not a valid member ID");
+        break;
+      case Library.OPERATION_COMPLETED:
+        System.out.println("The hold has been removed");
+        break;
+      default:
+        System.out.println("An error has occurred");
+    }
   }
   public void processHolds() {
-      System.out.println("Dummy Action");   
+    Member result;
+    do {
+      String bookID = getToken("Enter book id");
+      result = library.processHold(bookID);
+      if (result != null) {
+        System.out.println(result);
+      } else {
+        System.out.println("No valid holds left");
+      }
+      if (!yesOrNo("Process more books?")) {
+        break;
+      }
+    } while (true);
   }
   public void getTransactions() {
-      System.out.println("Dummy Action");   
+    Iterator result;
+    String memberID = getToken("Enter member id");
+    Calendar date  = getDate("Please enter the date for which you want records as mm/dd/yy");
+    result = library.getTransactions(memberID,date);
+    if (result == null) {
+      System.out.println("Invalid Member ID");
+    } else {
+      while(result.hasNext()) {
+        Transaction transaction = (Transaction) result.next();
+        System.out.println(transaction.getType() + "   "   + transaction.getTitle() + "\n");
+      }
+      System.out.println("\n  There are no more transactions \n" );
+    }
   }
   private void save() {
     if (library.save()) {
@@ -233,10 +356,6 @@ public class UserInterface {
                                 break;
         case RETRIEVE:          retrieve();
                                 break;
-        case SHOW_MEMBERS:	showMembers();
-                                break; 		
-        case SHOW_BOOKS:	showBooks();
-                                break; 		
         case HELP:              help();
                                 break;
       }
@@ -246,3 +365,5 @@ public class UserInterface {
     UserInterface.instance().process();
   }
 }
+   
+        
