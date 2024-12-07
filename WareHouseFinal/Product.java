@@ -1,29 +1,80 @@
-public class Product {
-    // Private fields
-    private String productID;
-    private String name;
-    private Float price;
-    private Integer quantity;
+import java.util.*;
 
-    // Constructor
-    public Product (String productID, String name, Float price, Integer quantity) {
-        this.productID = productID;
+public class Product {
+    private String id;
+    private String name;
+    private int quantity;
+    private String manufacturer;
+    private float price;
+    private List waitList = new LinkedList<WaitItem>();
+    private static int idNum = 1;
+
+    public Product(String name, int quantity, String manufacturer, float price) {
+        this.id = "P-" + Integer.toString(idNum);
         this.name = name;
+        this.quantity = quantity;
+        this.manufacturer = manufacturer;
         this.price = price;
+        idNum += 1;
+    }
+
+    public WaitItem addToWaitList(WaitItem item) {
+        try {
+            waitList.add(item);
+            return item;
+        } catch (Exception e) {
+            return null;
+        }
+    }
+
+    public boolean RemoveWaitItem(WaitItem waitItem) {
+        waitList.remove(waitItem);
+        return true;
+    }
+
+    public Iterator getWaitList() {
+        return waitList.iterator();
+    }
+
+    public String getID() {
+        return this.id;
+    }
+
+    public int getQuantity() {
+        return this.quantity;
+    }
+
+    public String getName() {
+        return this.name;
+    }
+
+    public String getManufacturer() {
+        return this.manufacturer;
+    }
+
+    public float getPrice() {
+        return this.price;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setQuantity(int quantity) {
         this.quantity = quantity;
     }
 
-    // Getters
-    public String getID() {return productID;}
-    public String getName() {return name;}
-    public Float getPrice() {return price;}
-    public Integer getQuantity() {return quantity;}
-
-    // Operations
-    public void modifyQuantity(Integer amount) {
-        this.quantity += amount;
+    public void setManufacturer(String manufacturer) {
+        this.manufacturer = manufacturer;
     }
-    public void setQuantity(Integer amount) {
-        this.quantity = amount;
+
+    public void setPrice(float price) {
+        this.price = price;
+    }
+
+    public String toString() {
+        String string = "ID: " + this.id + ", Name: " + this.name + ", Quantity: " + this.quantity + ", Manufacture: "
+                + this.manufacturer + ", Price: " + this.price;
+        return string;
     }
 }

@@ -1,20 +1,18 @@
-public class Invoice {
+public class WaitItem {
     private Client client; // The client adding items to their wishlist
     private Product product; // The product they are adding
-    private int quantity;
-    private float total; // The quantity of the product desired
+    private int quantity; // The quantity of the product desired
 
     // Constructor to initialize the WishItem
-    public Invoice(Client client, Product product, int quantity) {
+    public WaitItem(Client client, Product product, int quantity) {
         this.client = client;
         this.product = product;
         this.quantity = quantity;
-        this.total = this.product.getPrice() * this.quantity;
     }
 
     // Getters for the fields
     public Client getClient() {
-        return client;
+        return this.client;
     }
 
     public Product getProduct() {
@@ -25,12 +23,12 @@ public class Invoice {
         return this.quantity;
     }
 
-    public float getTotal() {
-        return total;
+    public void setQuantity(int newQuantity) {
+        this.quantity = newQuantity;
     }
 
     @Override
     public String toString() {
-        return "Purchased" + this.quantity + ", " + this.product.getName() + ", with a total of $" + this.total;
+        return this.client.getId() + " wished for " + this.product.getName() + " x " + this.quantity;
     }
 }
