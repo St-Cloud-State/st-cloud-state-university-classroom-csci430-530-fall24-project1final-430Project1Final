@@ -57,7 +57,7 @@ public class UserInterface {
   public int getCommand() {
     do {
       try {
-        int value = Integer.parseInt(getToken("\nEnter command: "));
+        int value = Integer.parseInt(getToken("\nPleaseEnter command: "));
         if (value >= EXIT && value <= HELP) {
           return value;
         }
@@ -92,7 +92,7 @@ public class UserInterface {
   }
 
   public void help() {
-    System.out.println("PleaseEnter a number between 0 and 10 as explained below:");
+    System.out.println("Please Enter a number between 0 and 10 as explained below:");
     System.out.println(EXIT + " - Exit");
     System.out.println(ADD_CLIENT + " - add a client");
     System.out.println(ADD_PRODUCT + " - add a product");
@@ -108,7 +108,7 @@ public class UserInterface {
   }
 
   public void addClient() {
-    String name = getToken("PleaseEnter Client name");
+    String name = getToken("Please Enter Client name");
     Client result;
     result = warehouse.addClient(name);
     Boolean test = warehouse.ClientExists(result);
