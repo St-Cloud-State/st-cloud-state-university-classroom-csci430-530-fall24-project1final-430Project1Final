@@ -1,0 +1,19 @@
+Script started on Sat Dec  7 15:54:49 2024
+[1m[7m%[27m[1m[0m                                                                                                           [0m[27m[24m[Jjenishalimbu@Jenishas-MacBook-Air WareHouseFinal % [K[?2004hjjaj    javac*.java[?2004l
+zsh: no matches found: javac*.java
+[1m[7m%[27m[1m[0m                                                                                                           [0m[27m[24m[Jjenishalimbu@Jenishas-MacBook-Air WareHouseFinal % [K[?2004hjjavac *.java[?2004l
+[1m[7m%[27m[1m[0m                                                                                                           [0m[27m[24m[Jjenishalimbu@Jenishas-MacBook-Air WareHouseFinal % [K[?2004h  [7mjava UserInterface[27m[19D [27mj[27ma[27mv[27ma[27m [27mU[27ms[27me[27mr[27mI[27mn[27mt[27me[27mr[27mf[27ma[27mc[27me[?2004l
+Error: Could not find or load main class UserInterface
+Caused by: java.lang.ClassNotFoundException: UserInterface
+[1m[7m%[27m[1m[0m                                                                                                           [0m[27m[24m[Jjenishalimbu@Jenishas-MacBook-Air WareHouseFinal % [K[?2004hjjava UserInterface[?2004l
+Error: Could not find or load main class UserInterface
+Caused by: java.lang.ClassNotFoundException: UserInterface
+[1m[7m%[27m[1m[0m                                                                                                           [0m[27m[24m[Jjenishalimbu@Jenishas-MacBook-Air WareHouseFinal % [K[?2004h[7m   java WareHouseFinal.UserInterface[27m[36D[27m [27m [27m [27mj[27ma[27mv[27ma[27m [27mW[27ma[27mr[27me[27mH[27mo[27mu[27ms[27me[27mF[27mi[27mn[27ma[27ml[27m.[27mU[27ms[27me[27mr[27mI[27mn[27mt[27me[27mr[27mf[27ma[27mc[27me[?2004l
+Error: Could not find or load main class WareHouseFinal.UserInterface
+Caused by: java.lang.ClassNotFoundException: WareHouseFinal.UserInterface
+[1m[7m%[27m[1m[0m                                                                                                           [0m[27m[24m[Jjenishalimbu@Jenishas-MacBook-Air WareHouseFinal % [K[?2004h[7m   javac WareHouseFinal/*.java[27m[30D[27m [27m [27m [27mj[27ma[27mv[27ma[27mc[27m [27mW[27ma[27mr[27me[27mH[27mo[27mu[27ms[27me[27mF[27mi[27mn[27ma[27ml[27m/[27m*[27m.[27mj[27ma[27mv[27ma[?2004l
+zsh: no matches found: WareHouseFinal/*.java
+[1m[7m%[27m[1m[0m                                                                                                           [0m[27m[24m[Jjenishalimbu@Jenishas-MacBook-Air WareHouseFinal % [K[?2004h[7m   java -cp . WareHouseFinal.UserInterface[27m[42D[27m [27m [27m [27mj[27ma[27mv[27ma[27m [27m-[27mc[27mp[27m [27m.[27m [27mW[27ma[27mr[27me[27mH[27mo[27mu[27ms[27me[27mF[27mi[27mn[27ma[27ml[27m.[27mU[27ms[27me[27mr[27mI[27mn[27mt[27me[27mr[27mf[27ma[27mc[27me[?2004l
+Error: Could not find or load main class WareHouseFinal.UserInterface
+Caused by: java.lang.ClassNotFoundException: WareHouseFinal.UserInterface
+[1m[7m%[27m[1m[0m                                                                                                           [0m[27m[24m[Jjenishalimbu@Jenishas-MacBook-Air WareHouseFinal % [K[?2004h

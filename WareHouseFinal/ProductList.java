@@ -1,8 +1,7 @@
 import java.util.*;
-import java.io.*;
 
 public class ProductList{
-    private LinkedList<Product> products = new LinkedList<Product>();
+    private LinkedList<Product> products = new LinkedList<>();
     private static ProductList productList;
     private ProductList() {
     }
@@ -43,7 +42,7 @@ public class ProductList{
         return false;
     }
 
-    public Iterator getProducts(){
+    public Iterator<Product> getProducts(){
         return this.products.iterator();
     }
 

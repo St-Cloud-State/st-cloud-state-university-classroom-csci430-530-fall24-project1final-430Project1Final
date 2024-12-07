@@ -5,11 +5,10 @@ public class Client {
   private String name;
   private String id;
   private static int idNum = 1;
-  private List wishList = new LinkedList<WishItem>();
-  private List invoiceList = new LinkedList<Invoice>();
+  private List<WishItem> wishList = new LinkedList<>();
+  private List<Invoice> invoiceList = new LinkedList<>();
 
   public Client(String name) {
-
     this.name = name;
     id = "C-" + Integer.toString(idNum);
     idNum += 1;
@@ -54,11 +53,11 @@ public class Client {
     }
   }
 
-  public Iterator getWishItems() {
+  public Iterator<WishItem> getWishItems() {
     return wishList.iterator();
   }
 
-  public Iterator getInvoices() {
+  public Iterator<Invoice> getInvoices() {
     return invoiceList.iterator();
   }
 

@@ -6,7 +6,7 @@ public class Product {
     private int quantity;
     private String manufacturer;
     private float price;
-    private List waitList = new LinkedList<WaitItem>();
+    private List<WaitItem> waitList = new LinkedList<>();
     private static int idNum = 1;
 
     public Product(String name, int quantity, String manufacturer, float price) {
@@ -32,7 +32,7 @@ public class Product {
         return true;
     }
 
-    public Iterator getWaitList() {
+    public Iterator<WaitItem> getWaitList() {
         return waitList.iterator();
     }
 
