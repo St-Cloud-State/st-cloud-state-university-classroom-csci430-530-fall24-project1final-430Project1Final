@@ -1,0 +1,452 @@
+Script started on Sat Dec  7 18:59:55 2024
+[1m[7m%[27m[1m[0m                                                                                                                                                                    [0m[27m[24m[Jjenishalimbu@Jenishas-MacBook-Air Project1-Sauharda1184 % [K[?2004hjjavac *.java[?2004l
+[1m[7m%[27m[1m[0m                                                                                                                                                                    [0m[27m[24m[Jjenishalimbu@Jenishas-MacBook-Air Project1-Sauharda1184 % [K[?2004hjjavac Usert  interface         rInterface.java[?2004l
+[1m[7m%[27m[1m[0m                                                                                                                                                                    [0m[27m[24m[Jjenishalimbu@Jenishas-MacBook-Air Project1-Sauharda1184 % [K[?2004hjjava UserInterface[?2004l
+1. Add Client
+2. Add Product
+3. Display Clients
+4. Display Products
+5. Add Item to Wishlist
+6. Display Wishlist
+7. Place Order
+8. Record Payment
+9. Receive Shipment
+10. Print All Invoices
+11. Exit
+Choose an option: 1
+Enter client name: C1
+1. Add Client
+2. Add Product
+3. Display Clients
+4. Display Products
+5. Add Item to Wishlist
+6. Display Wishlist
+7. Place Order
+8. Record Payment
+9. Receive Shipment
+10. Print All Invoices
+11. Exit
+Choose an option: 1
+Enter client name: C2
+1. Add Client
+2. Add Product
+3. Display Clients
+4. Display Products
+5. Add Item to Wishlist
+6. Display Wishlist
+7. Place Order
+8. Record Payment
+9. Receive Shipment
+10. Print All Invoices
+11. Exit
+Choose an option: 1
+Enter client name: C3
+1. Add Client
+2. Add Product
+3. Display Clients
+4. Display Products
+5. Add Item to Wishlist
+6. Display Wishlist
+7. Place Order
+8. Record Payment
+9. Receive Shipment
+10. Print All Invoices
+11. Exit
+Choose an option: 1
+Enter client name: C4
+1. Add Client
+2. Add Product
+3. Display Clients
+4. Display Products
+5. Add Item to Wishlist
+6. Display Wishlist
+7. Place Order
+8. Record Payment
+9. Receive Shipment
+10. Print All Invoices
+11. Exit
+Choose an option: 1
+Enter client name: C5
+1. Add Client
+2. Add Product
+3. Display Clients
+4. Display Products
+5. Add Item to Wishlist
+6. Display Wishlist
+7. Place Order
+8. Record Payment
+9. Receive Shipment
+10. Print All Invoices
+11. Exit
+Choose an option: 3
+[Client{name='C1', balance=0.0, wishlist=[]}, Client{name='C2', balance=0.0, wishlist=[]}, Client{name='C3', balance=0.0, wishlist=[]}, Client{name='C4', balance=0.0, wishlist=[]}, Client{name='C5', balance=0.0, wishlist=[]}]
+1. Add Client
+2. Add Product
+3. Display Clients
+4. Display Products
+5. Add Item to Wishlist
+6. Display Wishlist
+7. Place Order
+8. Record Payment
+9. Receive Shipment
+10. Print All Invoices
+11. Exit
+Choose an option: 2
+Enter product name: P1
+Enter quantity: 10
+Enter price: 1
+1. Add Client
+2. Add Product
+3. Display Clients
+4. Display Products
+5. Add Item to Wishlist
+6. Display Wishlist
+7. Place Order
+8. Record Payment
+9. Receive Shipment
+10. Print All Invoices
+11. Exit
+Choose an option: 2
+Enter product name: P2
+Enter quantity: 20
+Enter price: 2
+1. Add Client
+2. Add Product
+3. Display Clients
+4. Display Products
+5. Add Item to Wishlist
+6. Display Wishlist
+7. Place Order
+8. Record Payment
+9. Receive Shipment
+10. Print All Invoices
+11. Exit
+Choose an option: 2
+Enter product name: P3
+Enter quantity: 30
+Enter price: 3
+1. Add Client
+2. Add Product
+3. Display Clients
+4. Display Products
+5. Add Item to Wishlist
+6. Display Wishlist
+7. Place Order
+8. Record Payment
+9. Receive Shipment
+10. Print All Invoices
+11. Exit
+Choose an option: 2
+Enter product name: P4
+Enter quantity: 40
+Enter price: 4
+1. Add Client
+2. Add Product
+3. Display Clients
+4. Display Products
+5. Add Item to Wishlist
+6. Display Wishlist
+7. Place Order
+8. Record Payment
+9. Receive Shipment
+10. Print All Invoices
+11. Exit
+Choose an option: 2
+Enter product name: P5
+Enter quantity: 50
+Enter price: 5
+1. Add Client
+2. Add Product
+3. Display Clients
+4. Display Products
+5. Add Item to Wishlist
+6. Display Wishlist
+7. Place Order
+8. Record Payment
+9. Receive Shipment
+10. Print All Invoices
+11. Exit
+Choose an option: 4
+[Product{name='P1', quantity=10, price=1.0}, Product{name='P2', quantity=20, price=2.0}, Product{name='P3', quantity=30, price=3.0}, Product{name='P4', quantity=40, price=4.0}, Product{name='P5', quantity=50, price=5.0}]
+1. Add Client
+2. Add Product
+3. Display Clients
+4. Display Products
+5. Add Item to Wishlist
+6. Display Wishlist
+7. Place Order
+8. Record Payment
+9. Receive Shipment
+10. Print All Invoices
+11. Exit
+Choose an option: 5
+Enter client name: C1
+Enter product name to add to wishlist: P1
+Enter quantity: 5
+Added client C1 to the waitlist for product: P1
+1. Add Client
+2. Add Product
+3. Display Clients
+4. Display Products
+5. Add Item to Wishlist
+6. Display Wishlist
+7. Place Order
+8. Record Payment
+9. Receive Shipment
+10. Print All Invoices
+11. Exit
+Choose an option: 5
+Enter client name: C1
+Enter product name to add to wishlist: P3
+Enter quantity: 5
+Added client C1 to the waitlist for product: P3
+1. Add Client
+2. Add Product
+3. Display Clients
+4. Display Products
+5. Add Item to Wishlist
+6. Display Wishlist
+7. Place Order
+8. Record Payment
+9. Receive Shipment
+10. Print All Invoices
+11. Exit
+Choose an option: 5
+Enter client name: C1
+Enter product name to add to wishlist: P5
+Enter quantity: 5
+Added client C1 to the waitlist for product: P5
+1. Add Client
+2. Add Product
+3. Display Clients
+4. Display Products
+5. Add Item to Wishlist
+6. Display Wishlist
+7. Place Order
+8. Record Payment
+9. Receive Shipment
+10. Print All Invoices
+11. Exit
+Choose an option: 6
+Wishlist:
+[Client{name='C1', balance=0.0, wishlist=[]}, Client{name='C2', balance=0.0, wishlist=[]}, Client{name='C3', balance=0.0, wishlist=[]}, Client{name='C4', balance=0.0, wishlist=[]}, Client{name='C5', balance=0.0, wishlist=[]}]
+1. Add Client
+2. Add Product
+3. Display Clients
+4. Display Products
+5. Add Item to Wishlist
+6. Display Wishlist
+7. Place Order
+8. Record Payment
+9. Receive Shipment
+10. Print All Invoices
+11. Exit
+Choose an option: 5
+Enter client name: C2
+Enter product name to add to wishlist: P1
+Enter quantity: 7
+Added client C2 to the waitlist for product: P1
+1. Add Client
+2. Add Product
+3. Display Clients
+4. Display Products
+5. Add Item to Wishlist
+6. Display Wishlist
+7. Place Order
+8. Record Payment
+9. Receive Shipment
+10. Print All Invoices
+11. Exit
+Choose an option: 5
+Enter client name: P2
+1. Add Client
+2. Add Product
+3. Display Clients
+4. Display Products
+5. Add Item to Wishlist
+6. Display Wishlist
+7. Place Order
+8. Record Payment
+9. Receive Shipment
+10. Print All Invoices
+11. Exit
+Choose an option: 5
+Enter client name: C2
+Enter product name to add to wishlist: P2
+Enter quantity: 7
+Added client C2 to the waitlist for product: P2
+1. Add Client
+2. Add Product
+3. Display Clients
+4. Display Products
+5. Add Item to Wishlist
+6. Display Wishlist
+7. Place Order
+8. Record Payment
+9. Receive Shipment
+10. Print All Invoices
+11. Exit
+Choose an option: 5
+Enter client name: C2
+Enter product name to add to wishlist: P4
+Enter quantity: 7
+Added client C2 to the waitlist for product: P4
+1. Add Client
+2. Add Product
+3. Display Clients
+4. Display Products
+5. Add Item to Wishlist
+6. Display Wishlist
+7. Place Order
+8. Record Payment
+9. Receive Shipment
+10. Print All Invoices
+11. Exit
+Choose an option: 6
+Wishlist:
+[Client{name='C1', balance=0.0, wishlist=[]}, Client{name='C2', balance=0.0, wishlist=[]}, Client{name='C3', balance=0.0, wishlist=[]}, Client{name='C4', balance=0.0, wishlist=[]}, Client{name='C5', balance=0.0, wishlist=[]}]
+1. Add Client
+2. Add Product
+3. Display Clients
+4. Display Products
+5. Add Item to Wishlist
+6. Display Wishlist
+7. Place Order
+8. Record Payment
+9. Receive Shipment
+10. Print All Invoices
+11. Exit
+Choose an option: 5
+Enter client name: C3
+Enter product name to add to wishlist: P1
+Enter quantity: 6
+Added client C3 to the waitlist for product: P1
+1. Add Client
+2. Add Product
+3. Display Clients
+4. Display Products
+5. Add Item to Wishlist
+6. Display Wishlist
+7. Place Order
+8. Record Payment
+9. Receive Shipment
+10. Print All Invoices
+11. Exit
+Choose an option: 5
+Enter client name: C3
+Enter product name to add to wishlist: P2
+Enter quantity: 6
+Added client C3 to the waitlist for product: P2
+1. Add Client
+2. Add Product
+3. Display Clients
+4. Display Products
+5. Add Item to Wishlist
+6. Display Wishlist
+7. Place Order
+8. Record Payment
+9. Receive Shipment
+10. Print All Invoices
+11. Exit
+Choose an option: 5
+Enter client name: C3
+Enter product name to add to wishlist: P5
+Enter quantity: 6
+Added client C3 to the waitlist for product: P5
+1. Add Client
+2. Add Product
+3. Display Clients
+4. Display Products
+5. Add Item to Wishlist
+6. Display Wishlist
+7. Place Order
+8. Record Payment
+9. Receive Shipment
+10. Print All Invoices
+11. Exit
+Choose an option: 6
+Wishlist:
+[Client{name='C1', balance=0.0, wishlist=[]}, Client{name='C2', balance=0.0, wishlist=[]}, Client{name='C3', balance=0.0, wishlist=[]}, Client{name='C4', balance=0.0, wishlist=[]}, Client{name='C5', balance=0.0, wishlist=[]}]
+1. Add Client
+2. Add Product
+3. Display Clients
+4. Display Products
+5. Add Item to Wishlist
+6. Display Wishlist
+7. Place Order
+8. Record Payment
+9. Receive Shipment
+10. Print All Invoices
+11. Exit
+Choose an option: 7
+Enter client name to place order: C2
+Order placed successfully.
+1. Add Client
+2. Add Product
+3. Display Clients
+4. Display Products
+5. Add Item to Wishlist
+6. Display Wishlist
+7. Place Order
+8. Record Payment
+9. Receive Shipment
+10. Print All Invoices
+11. Exit
+Choose an option: 3
+[Client{name='C1', balance=0.0, wishlist=[]}, Client{name='C2', balance=0.0, wishlist=[]}, Client{name='C3', balance=0.0, wishlist=[]}, Client{name='C4', balance=0.0, wishlist=[]}, Client{name='C5', balance=0.0, wishlist=[]}]
+1. Add Client
+2. Add Product
+3. Display Clients
+4. Display Products
+5. Add Item to Wishlist
+6. Display Wishlist
+7. Place Order
+8. Record Payment
+9. Receive Shipment
+10. Print All Invoices
+11. Exit
+Choose an option: 6
+Wishlist:
+[Client{name='C1', balance=0.0, wishlist=[]}, Client{name='C2', balance=0.0, wishlist=[]}, Client{name='C3', balance=0.0, wishlist=[]}, Client{name='C4', balance=0.0, wishlist=[]}, Client{name='C5', balance=0.0, wishlist=[]}]
+1. Add Client
+2. Add Product
+3. Display Clients
+4. Display Products
+5. Add Item to Wishlist
+6. Display Wishlist
+7. Place Order
+8. Record Payment
+9. Receive Shipment
+10. Print All Invoices
+11. Exit
+Choose an option: 6
+Wishlist:
+[Client{name='C1', balance=0.0, wishlist=[]}, Client{name='C2', balance=0.0, wishlist=[]}, Client{name='C3', balance=0.0, wishlist=[]}, Client{name='C4', balance=0.0, wishlist=[]}, Client{name='C5', balance=0.0, wishlist=[]}]
+1. Add Client
+2. Add Product
+3. Display Clients
+4. Display Products
+5. Add Item to Wishlist
+6. Display Wishlist
+7. Place Order
+8. Record Payment
+9. Receive Shipment
+10. Print All Invoices
+11. Exit
+Choose an option: 6
+Wishlist:
+[Client{name='C1', balance=0.0, wishlist=[]}, Client{name='C2', balance=0.0, wishlist=[]}, Client{name='C3', balance=0.0, wishlist=[]}, Client{name='C4', balance=0.0, wishlist=[]}, Client{name='C5', balance=0.0, wishlist=[]}]
+1. Add Client
+2. Add Product
+3. Display Clients
+4. Display Products
+5. Add Item to Wishlist
+6. Display Wishlist
+7. Place Order
+8. Record Payment
+9. Receive Shipment
+10. Print All Invoices
+11. Exit
+Choose an option: 11
+Exiting...
+[1m[7m%[27m[1m[0m                                                                                                                                                                    [0m[27m[24m[Jjenishalimbu@Jenishas-MacBook-Air Project1-Sauharda1184 % [K[?2004h
