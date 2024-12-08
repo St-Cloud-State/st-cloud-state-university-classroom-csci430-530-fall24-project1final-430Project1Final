@@ -1,34 +1,22 @@
 public class WaitItem {
-    private Client client; // The client adding items to their wishlist
-    private Product product; // The product they are adding
-    private int quantity; // The quantity of the product desired
+    private Product product;
+    private Client client;
 
-    // Constructor to initialize the WishItem
-    public WaitItem(Client client, Product product, int quantity) {
-        this.client = client;
+    public WaitItem(Product product, Client client) {
         this.product = product;
-        this.quantity = quantity;
-    }
-
-    // Getters for the fields
-    public Client getClient() {
-        return this.client;
+        this.client = client;
     }
 
     public Product getProduct() {
-        return this.product;
+        return product;
     }
 
-    public int getQuantity() {
-        return this.quantity;
-    }
-
-    public void setQuantity(int newQuantity) {
-        this.quantity = newQuantity;
+    public Client getClient() {
+        return client;
     }
 
     @Override
     public String toString() {
-        return this.client.getId() + " wished for " + this.product.getName() + " x " + this.quantity;
+        return "WaitItem{product=" + product + ", client=" + client + "}";
     }
 }

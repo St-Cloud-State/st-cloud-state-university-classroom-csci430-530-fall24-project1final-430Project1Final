@@ -1,30 +1,32 @@
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class ClientList {
-  private List<Client> clients = new LinkedList<>();
-  private static ClientList clientList;
+    private List<Client> clients;
 
-  private ClientList() {
-  }
-
-  public static ClientList instance() {
-    if (clientList == null) {
-      return (clientList = new ClientList());
-    } else {
-      return clientList;
+    public ClientList() {
+        clients = new ArrayList<>();
     }
-  }
 
-  public boolean insertClient(Client client) {
-    clients.add(client);
-    return true;
-  }
+    public void addClient(Client client) {
+        clients.add(client);
+    }
 
-  public Iterator<Client> getClients() {
-    return clients.iterator();
-  }
+    public List<Client> getClients() {
+        return clients;
+    }
 
-  public String toString() {
-    return clients.toString();
-  }
+    public Client getClient(String name) {
+        for (Client client : clients) {
+            if (client.getName().equals(name)) {
+                return client;
+            }
+        }
+        return null; // Client not found
+    }
+
+    @Override
+    public String toString() {
+        return clients.toString();
+    }
 }

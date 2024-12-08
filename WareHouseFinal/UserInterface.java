@@ -1,368 +1,60 @@
-import java.io.*;
-import java.util.*;
+import java.util.Scanner;
 
 public class UserInterface {
-  private static UserInterface userInterface;
-  private BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
-  private static Warehouse warehouse;
-  private static final int EXIT = 0;
-  private static final int ADD_CLIENT = 1;
-  private static final int ADD_PRODUCT = 2;
-  private static final int ADD_PODUCT_TO_CLIENT_WISHLIST = 3;
-  private static final int PLACE_CLIENT_ORDER = 4;
-  private static final int RECIEVE_SHIPMENT = 5;
-  private static final int MAKE_PAYMENT = 6;
-  private static final int DISPLAY_ALL_CLIENTS = 7;
-  private static final int DISPLAY_ALL_PRODUCTS = 8;
-  private static final int DISPLAY_CLIENT_WISHLIST = 9;
-  private static final int DISPLAY_CLIENT_INVOICES = 10;
-  private static final int DISPLAY_PRODUCT_WAITLIST = 11;
-  private static final int HELP = 12;
+    private ClientList clientList;
+    private ProductList productList;
 
-  private UserInterface() {
-    warehouse = Warehouse.instance();
-  }
-
-  public static UserInterface instance() {
-    if (userInterface == null) {
-      return userInterface = new UserInterface();
-    } else {
-      return userInterface;
-    }
-  }
-
-  public String getToken(String prompt) {
-    do {
-      try {
-        System.out.println(prompt);
-        String line = reader.readLine();
-        StringTokenizer tokenizer = new StringTokenizer(line, "\n\r\f");
-        if (tokenizer.hasMoreTokens()) {
-          return tokenizer.nextToken();
-        }
-      } catch (IOException ioe) {
-        System.exit(0);
-      }
-    } while (true);
-  }
-
-  private boolean yesOrNo(String prompt) {
-    String more = getToken(prompt + " (Y|y)[es] or anything else for no");
-    if (more.charAt(0) != 'y' && more.charAt(0) != 'Y') {
-      return false;
-    }
-    return true;
-  }
-
-  public int getCommand() {
-    do {
-      try {
-        int value = Integer.parseInt(getToken("\nPleaseEnter command: "));
-        if (value >= EXIT && value <= HELP) {
-          return value;
-        }
-      } catch (NumberFormatException nfe) {
-        System.out.println("Please Enter a number");
-      }
-    } while (true);
-  }
-
-  public int getNumber(String prompt) {
-    do {
-      try {
-        String item = getToken(prompt);
-        Integer num = Integer.valueOf(item);
-        return num.intValue();
-      } catch (NumberFormatException nfe) {
-        System.out.println("Please enter to input a number ");
-      }
-    } while (true);
-  }
-
-  public Float getFloat(String prompt) {
-    do {
-      try {
-        String item = getToken(prompt);
-        Float num = Float.valueOf(item);
-        return num.floatValue();
-      } catch (NumberFormatException nfe) {
-        System.out.println("Please enter a number to Input ");
-      }
-    } while (true);
-  }
-
-  public void help() {
-    System.out.println("Please Enter a number between 0 and 10 as explained below:");
-    System.out.println(EXIT + " - Exit");
-    System.out.println(ADD_CLIENT + " - add a client");
-    System.out.println(ADD_PRODUCT + " - add a product");
-    System.out.println(ADD_PODUCT_TO_CLIENT_WISHLIST + " - add product to the clients wishlist");
-    System.out.println(PLACE_CLIENT_ORDER + " - Place a client order");
-    System.out.println(RECIEVE_SHIPMENT + " - Revieve Shipment");
-    System.out.println(MAKE_PAYMENT + " - Make Payment");
-    System.out.println(DISPLAY_ALL_CLIENTS + " - Display all Clients");
-    System.out.println(DISPLAY_ALL_PRODUCTS + " - Display all products");
-    System.out.println(DISPLAY_CLIENT_WISHLIST + " - Display client wishlist");
-    System.out.println(DISPLAY_CLIENT_INVOICES + " - Display client invoices");
-    System.out.println(DISPLAY_PRODUCT_WAITLIST + " - Display product WaitList");
-  }
-
-  public void addClient() {
-    String name = getToken("Please Enter Client name");
-    Client result;
-    result = warehouse.addClient(name);
-    Boolean test = warehouse.ClientExists(result);
-
-    if ((result == null) || (test == false)) {
-      System.out.println("The System Could not add Client");
-    }
-    System.out.println(result);
-  }
-
-  public void addProducts() {
-    Product result;
-    do {
-      String name = getToken("Please Enter  name");
-      String manufacturer = getToken("Please Enter manufacturer");
-      int quantity = getNumber("PleaseEnter quantity");
-      Float price = getFloat("Please Enter price");
-      result = warehouse.addProduct(name, quantity, manufacturer, price);
-      Boolean test = warehouse.ProductExists(result);
-      System.out.println(test);
-      if ((result != null) || (test == false)) {
-        System.out.println(result);
-      } else {
-        System.out.println("Product could not be added to the Warehouse");
-      }
-      if (!yesOrNo("Add more Products to the Warehouse?")) {
-        break;
-      }
-    } while (true);
-  }
-
-  public void DisplayAllClients() {
-    warehouse.DisplayClients();
-  }
-
-  public void DisplayAllProducts() {
-    warehouse.DisplayProducts();
-  }
-
-  public void DisplayClientWishlist() {
-    try {
-      String clientID = getToken("Please enter Client ID: ");
-      Client client = warehouse.searchClientByID(clientID);
-      if (clientID == null) {
-        System.out.println("The Client Not Found.");
-      }
-      warehouse.DisplayClientWishlist(client);
-    } catch (Exception e) {
-      System.out.println("This is an Error, Retry...");
-    }
-  }
-
-  public void DisplayClientInvoices() {
-    try {
-      String clientID = getToken("Please enter Client ID: ");
-      Client client = warehouse.searchClientByID(clientID);
-      warehouse.DisplayInvoices(client);
-    } catch (Exception e) {
-      System.out.println("Error,, Try Again");
+    public UserInterface(ClientList clientList, ProductList productList) {
+        this.clientList = clientList;
+        this.productList = productList;
     }
 
-  }
+    public void displayMenu() {
+        Scanner scanner = new Scanner(System.in);
+        while (true) {
+            System.out.println("1. Add Client");
+            System.out.println("2. Add Product");
+            System.out.println("3. Display Clients");
+            System.out.println("4. Display Products");
+            System.out.println("5. Exit");
+            System.out.print("Choose an option: ");
+            int choice = scanner.nextInt();
+            scanner.nextLine();  // consume newline
 
-  public void PlaceClientOrder() {
-    try {
-      String clientID = getToken("Please enter Client ID: ");
-      Client client = warehouse.searchClientByID(clientID);
-      if (clientID == null) {
-        System.out.println("The Client is not found.");
-      }
-      Iterator<WishItem> iterator = client.getWishItems();
-
-      if (!iterator.hasNext()) {
-        System.out.println("The client has nothing in the wishlist...");
-      }
-      System.out.println("Wishlist Items");
-      warehouse.DisplayClientWishlist(client);
-
-      while (iterator.hasNext()) {
-        WishItem wishItem = iterator.next();
-        System.out.println("-------------------------------------");
-        System.out.println(wishItem);
-        System.out.println("-------------------------------------");
-        System.out.println("1 - Remove Item from the wishlist");
-        System.out.println("2 - Change Item Quantity");
-        System.out.println("3 - Next Item");
-        String option = getToken("Enter Option: ");
-
-        switch (option) {
-          case "1":
-            client.RemoveWishItem(wishItem);
-            System.out.println("now removing wish Item... ");
-            break;
-          case "2":
-            int newQuantity = getNumber("Please enter new quantity: ");
-            wishItem.setQuantity(newQuantity);
-            break;
-          case "3":
-            System.out.println("Going to next Item...");
-            break;
-
-          default:
-            System.out.println("This an invalid Option, Please Restart");
-            PlaceClientOrder();
-            break;
+            switch (choice) {
+                case 1:
+                    System.out.print("Enter client name: ");
+                    String clientName = scanner.nextLine();
+                    clientList.addClient(new Client(clientName));
+                    break;
+                case 2:
+                    System.out.print("Enter product name: ");
+                    String productName = scanner.nextLine();
+                    System.out.print("Enter quantity: ");
+                    int quantity = scanner.nextInt();
+                    System.out.print("Enter price: ");
+                    double price = scanner.nextDouble();
+                    productList.addProduct(new Product(productName, quantity, price));
+                    break;
+                case 3:
+                    System.out.println(clientList);
+                    break;
+                case 4:
+                    System.out.println(productList);
+                    break;
+                case 5:
+                    System.out.println("Exiting...");
+                    return;
+                default:
+                    System.out.println("Invalid option. Please try again.");
+            }
         }
-      }
-
-      warehouse.DisplayClientWishlist(client);
-      warehouse.CompleteOrder(client);
-    } catch (Exception e) {
-
-      System.out.println(e + "Error, Please retry...");
     }
-  }
 
-  public void ReceiveShipment() {
-    try {
-      do {
-        String productID = getToken("Please Enter product id that you are recieving");
-        Product product = warehouse.searchProductByID(productID);
-        if (product == null) {
-          System.out.println("Product not found, might need to add new product.");
-          return;
-        }
-        int Quantity = getNumber("Enter Product Quantity: ");
-        if (Quantity > 0) {
-          warehouse.ReceiveShipment(product, Quantity);
-        } else {
-          System.out.println("Quantity must be greater than 0");
-        }
-
-        if (!yesOrNo("Recive more Products?")) {
-          break;
-        }
-      } while (true);
-
-    } catch (Exception e) {
-      System.out.println(e + "Error");
+    public static void main(String[] args) {
+        ClientList clientList = new ClientList();
+        ProductList productList = new ProductList();
+        UserInterface ui = new UserInterface(clientList, productList);
+        ui.displayMenu();
     }
-  }
-
-  public void MakePayment() {
-    try {
-      String clientID = getToken("Enter Client ID: ");
-      Client client = warehouse.searchClientByID(clientID);
-      if (clientID == null) {
-        System.out.println("Client Not Found.");
-      }
-
-      float paymentAmount = getFloat("Enter Payment Amount: ");
-      System.out.println("Beginning Balance: $" + client.getBalance());
-      boolean success = warehouse.processPayment(client, paymentAmount);
-      if (success == true) {
-        System.out.println("Payment Completed");
-      }
-    } catch (Exception e) {
-      System.out.println("Error, Retry...");
-    }
-  }
-
-  public void addProductToWishlist() {
-    String cid = getToken("Enter client id");
-    do {
-      try {
-        Client client;
-        client = warehouse.searchClientByID(cid);
-        if (client == null) {
-          System.out.println("Client With id not found");
-          return;
-        }
-
-        String pid = getToken("Enter product id you want to add");
-        int quantity = getNumber("Enter quantity");
-
-        Product product;
-        product = warehouse.searchProductByID(pid);
-
-        if (product == null) {
-          System.out.println("product With id not found");
-          return;
-        }
-
-        WishItem item;
-        item = warehouse.addProductToWishlist(client, product, quantity);
-
-        if (item == null) {
-          System.out.println("There was an error add product to wishlist");
-        }
-        System.out.println(item);
-
-        if (!yesOrNo("Add more Products to wishlist?")) {
-          break;
-        }
-      } catch (Exception err) {
-        System.out.println("There was an error add product to wishlist");
-      }
-    } while (true);
-  }
-  public void DisplayProductWaitlist() {
-    try {
-      String productID = getToken("Enter Client ID: ");
-      Product product = warehouse.searchProductByID(productID);
-      warehouse.DisplayProductWaitlist(product);
-    } catch (Exception e) {
-      System.out.println("There was an Error,, Please Try Again");
-    }
-  }
-  public void process() {
-    int command;
-    help();
-    while ((command = getCommand()) != EXIT) {
-      switch (command) {
-        case ADD_CLIENT:
-          addClient();
-          break;
-        case ADD_PRODUCT:
-          addProducts();
-          break;
-        case ADD_PODUCT_TO_CLIENT_WISHLIST:
-          addProductToWishlist();
-          break;
-        case PLACE_CLIENT_ORDER:
-          PlaceClientOrder();
-          break;
-        case RECIEVE_SHIPMENT:
-          ReceiveShipment();
-          break;
-        case MAKE_PAYMENT:
-          MakePayment();
-          break;
-        case DISPLAY_ALL_CLIENTS:
-          DisplayAllClients();
-          break;
-        case DISPLAY_ALL_PRODUCTS:
-          DisplayAllProducts();
-          break;
-        case DISPLAY_CLIENT_WISHLIST:
-          DisplayClientWishlist();
-          break;
-        case DISPLAY_CLIENT_INVOICES:
-          DisplayClientInvoices();
-          break;
-        case DISPLAY_PRODUCT_WAITLIST:
-          DisplayProductWaitlist();
-          break;
-        case HELP:
-          help();
-          break;
-      }
-    }
-  }
-
-  public static void main(String[] s) {
-    UserInterface.instance().process();
-  }
 }

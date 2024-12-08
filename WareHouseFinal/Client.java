@@ -1,95 +1,30 @@
-import java.util.*;
-
 public class Client {
-  private float balance;
-  private String name;
-  private String id;
-  private static int idNum = 1;
-  private List<WishItem> wishList = new LinkedList<>();
-  private List<Invoice> invoiceList = new LinkedList<>();
+    private String name;
+    private double balance;
 
-  public Client(String name) {
-    this.name = name;
-    id = "C-" + Integer.toString(idNum);
-    idNum += 1;
-    this.balance = 0;
-  }
-
-  public String getName() {
-    return name;
-  }
-
-  public String getId() {
-    return id;
-  }
-
-  public void setName(String newName) {
-    name = newName;
-  }
-
-  public boolean equals(String id) {
-    return this.id.equals(id);
-  }
-
-  public float getBalance() {
-    return balance;
-  }
-
-  public WishItem addToWishList(WishItem item) {
-    try {
-      wishList.add(item);
-      return item;
-    } catch (Exception e) {
-      return null;
+    public Client(String name) {
+        this.name = name;
+        this.balance = 0.0;
     }
-  }
 
-  public Invoice addToInvoiceList(Invoice item) {
-    try {
-      invoiceList.add(item);
-      return item;
-    } catch (Exception e) {
-      return null;
+    public String getName() {
+        return name;
     }
-  }
 
-  public Iterator<WishItem> getWishItems() {
-    return wishList.iterator();
-  }
-
-  public Iterator<Invoice> getInvoices() {
-    return invoiceList.iterator();
-  }
-
-  public float addToBalance(float payment) {
-    balance += payment;
-    return balance;
-  }
-
-  public float subBalance(float cost) {
-    balance -= cost;
-    return balance;
-  }
-
-  public float getWishListTotal() {
-    Iterator<WishItem> iterator = getWishItems();
-    float total = 0;
-    while (iterator.hasNext()) {
-      WishItem wishItem = iterator.next();
-      Product product = wishItem.getProduct();
-      float wishprice = product.getPrice() * wishItem.getQuantity();
-      total += wishprice;
+    public double getBalance() {
+        return balance;
     }
-    return total;
-  }
 
-  public String toString() {
-    String string = "ID: " + id + ", Name: " + name + ", Account Balance: $" + balance;
-    return string;
-  }
+    public void addBalance(double amount) {
+        balance += amount;
+    }
 
-  public boolean RemoveWishItem(WishItem wishItem) {
-    wishList.remove(wishItem);
-    return true;
-  }
+    public void subtractBalance(double amount) {
+        balance -= amount;
+    }
+
+    @Override
+    public String toString() {
+        return "Client{name='" + name + "', balance=" + balance + '}';
+    }
 }

@@ -1,49 +1,32 @@
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
 
-public class ProductList{
-    private LinkedList<Product> products = new LinkedList<>();
-    private static ProductList productList;
-    private ProductList() {
+public class ProductList {
+    private List<Product> products;
+
+    public ProductList() {
+        products = new ArrayList<>();
     }
-    public static ProductList instance() {
-        if (productList == null) {
-          return (productList = new ProductList());
-        } else {
-          return productList;
-        }
-      }
 
-    public Product search(String Productid){
-        Product target = null;
-    
-        for (Product p : products) {
-            if (p.getID().equals(Productid)) {
-                target = p;
-                return target;
+    public void addProduct(Product product) {
+        products.add(product);
+    }
+
+    public Product getProduct(String name) {
+        for (Product product : products) {
+            if (product.getName().equals(name)) {
+                return product;
             }
         }
-        return null;
+        return null; // Product not found
     }
 
-    public boolean insertProduct(Product product){
-        if(!this.products.add(product)){
-            return false;
-        };
-        return true;
+    public List<Product> getProducts() {
+        return products;
     }
 
-    public boolean RemoveProduct(String productID){
-        for(Product p: this.products){
-            if(p.getID().equals(productID)){
-                this.products.remove(p);
-                return true;
-            }
-        }
-        return false;
+    @Override
+    public String toString() {
+        return products.toString();
     }
-
-    public Iterator<Product> getProducts(){
-        return this.products.iterator();
-    }
-
 }
